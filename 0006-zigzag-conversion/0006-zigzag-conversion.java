@@ -4,7 +4,7 @@ class Solution {
 
         StringBuilder[] rows = new StringBuilder[Math.min(numRows, s.length())];
         for (int i = 0; i < rows.length; i++) {
-            rows[i] = new StringBuilder();
+          rows[i] = new StringBuilder();
         }
 
         int currRow = 0;
