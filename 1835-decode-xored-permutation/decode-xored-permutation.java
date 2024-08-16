@@ -1,18 +1,21 @@
- class Solution{   
+class Solution {
     public int[] decode(int[] encoded) {
-        int first = 0;
-        int n = encoded.length+1;
-        for(int i=1;i<=n;i++){
-            first ^= i; 
+        int n=encoded.length+1;
+        int f=0;
+        for(int i=1;i<=n;i++)
+        {
+            f=f^i;
+        } 
+        for(int i=1;i<n-1;i=i+2)
+        {
+            f=f^encoded[i];
         }
-        for(int i=1;i<n-1;i+=2)
-         {first ^= encoded[i];}
-        
-        int[] perm = new int[n];
-        perm[0] = first;
-        for(int i=0;i<n-1;i++){
-            perm[i+1] = perm[i] ^ encoded[i];
+        int [] ans=new int[n];
+        ans[0]=f;
+        for(int i=0;i<n-1;i++)
+        {
+            ans[i+1]=ans[i]^encoded[i];
         }
-        return perm;
+        return ans;
     }
- }
+}
