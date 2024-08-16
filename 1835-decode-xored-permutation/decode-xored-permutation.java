@@ -1,19 +1,18 @@
-class Solution {
+ class Solution{   
     public int[] decode(int[] encoded) {
-        int n = encoded.length;
-        int[] ans = new int[n + 1];
-        int totalXOR = 0;
-        for (int i = 1; i <= n + 1; i++) {
-            totalXOR ^= i;
+        int first = 0;
+        int n = encoded.length+1;
+        for(int i=1;i<=n;i++){
+            first ^= i; 
         }
-        int oddXOR = 0;
-        for (int i = 1; i < n; i += 2) {
-            oddXOR ^= encoded[i];
+        for(int i=1;i<n-1;i+=2)
+         {first ^= encoded[i];}
+        
+        int[] perm = new int[n];
+        perm[0] = first;
+        for(int i=0;i<n-1;i++){
+            perm[i+1] = perm[i] ^ encoded[i];
         }
-        ans[0] = totalXOR ^ oddXOR;
-        for (int i = 0; i < n; i++) {
-            ans[i + 1] = ans[i] ^ encoded[i];
-        }
-        return ans;
+        return perm;
     }
-}
+ }
