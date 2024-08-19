@@ -3,6 +3,7 @@ class Solution {
     {
         String[] ans=s.split("\\s+");
         int n=ans.length;
-        return (ans[n-1].length());
+        int m=(ans[n-1].length());
+        return m;
     }
 }
