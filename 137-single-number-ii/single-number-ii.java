@@ -1,26 +1,23 @@
 class Solution {
     public int singleNumber(int[] nums) {
-     int n=nums.length;
-     int k=0;
-     for(int i=0;i<n;i++)
-     {
-        int c=0;
-        int nu=nums[i];
-        for(int j=0;j<n;j++)
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<nums.length;i++)
         {
-            if(nums[j]==nu&&i!=j)
+            if(map.containsKey(nums[i]))
             {
-                c++;
+                map.put(nums[i],map.get(nums[i])+1);
+            }
+            else{
+                map.put(nums[i],1);
             }
         }
-        if(c==0)
+        for(Map.Entry<Integer,Integer> m : map.entrySet())
         {
-            k=nu;
-            break;
+            if(m.getValue()==1)
+            {
+                return m.getKey();
+            }
         }
-
-     }
-     return k;
-     
+        return -1;
     }
 }
