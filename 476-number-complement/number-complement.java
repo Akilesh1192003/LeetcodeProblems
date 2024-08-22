@@ -1,13 +1,17 @@
 class Solution {
-    public int findComplement(int num) {
-        int temp=num;
-        int merge=1;
-        while(temp!=0)
+    public int findComplement(int num) 
+    {
+        int n = (int)(Math.pow(2, digits(num)) - 1);  
+        return n - num;                            
+    }
+    public static int digits(int n)
+    {
+        int c = 0;             
+        while(n > 0)                
         {
-            num=(num^merge);
-            temp=temp>>1;
-            merge=merge<<1;
+            n = n / 2;              
+            c++;                   
         }
-        return num;
+        return c; 
     }
 }
