@@ -15,10 +15,6 @@ class Solution {
         {
             return true;
         }
-       /* if(n>1 && n<=9)
-        {
-            return false;
-        }*/
         while(n!=1 && n>6)
         {
          n=result(n);
